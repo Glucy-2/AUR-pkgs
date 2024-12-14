@@ -1,0 +1,43 @@
+[submodule "ddns-go-bin"]
+    path = ddns-go-bin
+    url = ssh://aur@aur.archlinux.org/ddns-go-bin.git
+
+[submodule "ecapture-bin"]
+    path = ecapture-bin
+    url = ssh://aur@aur.archlinux.org/ecapture-bin.git
+
+[submodule "ifrextractor-rs"]
+    path = ifrextractor-rs
+    url = ssh://aur@aur.archlinux.org/ifrextractor-rs.git
+
+[submodule "ifrextractor-rs-bin"]
+    path = ifrextractor-rs-bin
+    url = ssh://aur@aur.archlinux.org/ifrextractor-rs-bin.git
+
+[submodule "mcping-git"]
+    path = mcping-git
+    url = ssh://aur@aur.archlinux.org/mcping-git.git
+
+[submodule "neo4j-bin"]
+    path = neo4j-bin
+    url = ssh://aur@aur.archlinux.org/neo4j-bin.git
+
+[submodule "neo4j-bin"]
+    path = neo4j-bin
+    url = ssh://aur@aur.archlinux.org/neo4j-bin.git
+
+[submodule "sast-evento"]
+    path = sast-evento
+    url = ssh://aur@aur.archlinux.org/sast-evento.git
+
+[submodule "sast-evento-bin"]
+    path = sast-evento-bin
+    url = ssh://aur@aur.archlinux.org/sast-evento-bin.git
+
+[submodule "sast-evento-git"]
+    path = sast-evento-git
+    url = ssh://aur@aur.archlinux.org/sast-evento-git.git
+
+[submodule "sshs-bin"]
+    path = sshs-bin
+    url = ssh://aur@aur.archlinux.org/sshs.git
