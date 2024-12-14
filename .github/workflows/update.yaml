@@ -2,8 +2,8 @@
 name: Update AUR packages
 
 on:
-  schedule:
-    - cron: '0 4 * * *'
+  # schedule:
+  #   - cron: '0 4 * * *'
   workflow_dispatch:
   push:
   pull_request:
@@ -24,34 +24,25 @@ jobs:
       run: |
         packages=$(grep -oP '(?<=\[submodule ").*?(?="\])' .gitmodules | jq -Rsc '[split("\n")[] | select(length > 0)]')
         echo "packages=${packages}" | tee -a $GITHUB_OUTPUT
+
   update:
     runs-on: ubuntu-latest
     needs: checkout-packages
     strategy:
       matrix:
-        packages: ${{fromJson(needs.checkout-packages.outputs.packages)}}
+        package-name: ${{fromJson(needs.checkout-packages.outputs.packages)}}
     steps:
-    - name: Setup SSH and Git
-      run: |
-        mkdir -p ~/.ssh
-        echo "${AUR_SSH_KEY}" > ~/.ssh/aur
-        chmod 600 ~/.ssh/aur
-        ssh-keyscan aur.archlinux.org >> ~/.ssh/known_hosts
-        git config --global user.email "glucy-2@outlook.com"
-        git config --global user.name "aur"
-        cat > ~/.ssh/config << EOF
-        Host aur.archlinux.org
-          IdentityFile ~/.ssh/aur
-          User aur
-        EOF
+    - name: Get AUR SSH host key
+      id: get-aur-host-key
+      run: echo "aur-host-key=$(ssh-keyscan aur.archlinux.org)" >> $GITHUB_OUTPUT
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
-        submodules: 'recursive'
-    - name: Update
+        repository: "ssh://aur@aur.archlinux.org/${{ matrix.package-name }}.git"
+        ssh-key: ${{ secrets.AUR_SSH_KEY }}
+        ssh-known-hosts: ${{ steps.get-aur-host-key.outputs.aur-host-key }}
+        ssh-user: aur
+    - name: Update package
+      id: update-package
       run: |
-        for package in ${{ matrix.packages }}; do
-          cd $package
-          ./update.sh
-          cd ..
-        done
+        ./update.sh
