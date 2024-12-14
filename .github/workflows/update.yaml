@@ -24,16 +24,6 @@ jobs:
       run: |
         packages=$(grep -oP '(?<=\[submodule ").*?(?="\])' .gitmodules | jq -Rsc '[split("\n")[] | select(length > 0)]')
         echo "packages=${packages}" | tee -a $GITHUB_OUTPUT
-    - name: Test
-      run: |
-        echo ${{ steps.checkout-packages.outputs.packages }}
-  test:
-    runs-on: ubuntu-latest
-    needs: checkout-packages
-    steps:
-    - name: Test
-      run: |
-        echo ${{ needs.checkout-packages.outputs }}
   update:
     runs-on: ubuntu-latest
     needs: checkout-packages
@@ -47,9 +37,13 @@ jobs:
         echo "${AUR_SSH_KEY}" > ~/.ssh/aur
         chmod 600 ~/.ssh/aur
         ssh-keyscan aur.archlinux.org >> ~/.ssh/known_hosts
-        git config --global core.sshCommand 'ssh -i ~/.ssh/aur -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
         git config --global user.email "glucy-2@outlook.com"
         git config --global user.name "aur"
+        cat > ~/.ssh/config << EOF
+        Host aur.archlinux.org
+          IdentityFile ~/.ssh/aur
+          User aur
+        EOF
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
