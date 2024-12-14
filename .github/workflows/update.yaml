@@ -19,11 +19,9 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-      # with:
-      #   submodules: 'recursive'
     - name: Checkout package list
       run: |
-        packages=$(find . -mindepth 2 -maxdepth 2 -type f -name "PKGBUILD" -exec dirname {} \; | sed 's|^\./||' | sort -u | jq -R . | jq -s -c .)
+        packages=$(grep -oP '(?<=\[submodule ").*?(?="\])' .gitmodules | jq -Rsc '[split("\n")[] | select(length > 0)]')
         echo "packages=${packages}" | tee -a $GITHUB_OUTPUT
   update:
     runs-on: ubuntu-latest
