@@ -15,14 +15,25 @@ jobs:
   checkout-packages:
     runs-on: ubuntu-latest
     outputs:
-      packages: ${{ steps.check.outputs.packages }}
+      packages: ${{ steps.checkout-packages.outputs.packages }}
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-    - name: Checkout package list
+    - id: checkout-packages
+      name: Checkout package list
       run: |
         packages=$(grep -oP '(?<=\[submodule ").*?(?="\])' .gitmodules | jq -Rsc '[split("\n")[] | select(length > 0)]')
         echo "packages=${packages}" | tee -a $GITHUB_OUTPUT
+    - name: Test
+      run: |
+        echo ${{ steps.checkout-packages.outputs.packages }}
+  test:
+    runs-on: ubuntu-latest
+    needs: checkout-packages
+    steps:
+    - name: Test
+      run: |
+        echo ${{ needs.checkout-packages.outputs }}
   update:
     runs-on: ubuntu-latest
     needs: checkout-packages
