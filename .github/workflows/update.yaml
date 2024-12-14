@@ -23,8 +23,8 @@ jobs:
         submodules: 'recursive'
     - name: Checkout package list
       run: |
-        packages=$(find . -mindepth 2 -maxdepth 2 -type f -name "PKGBUILD" -exec dirname {} \; | sort -u | jq -R . | jq -s .)
-        echo "packages=${packages}" >> $GITHUB_OUTPUT
+        packages=$(find . -mindepth 2 -maxdepth 2 -type f -name "PKGBUILD" -exec dirname {} \; | sed 's|^\./||' | sort -u | jq -R . | jq -s -c .)
+        echo "packages=${packages}" | tee -a $GITHUB_OUTPUT
   update:
     runs-on: ubuntu-latest
     needs: checkout-packages
