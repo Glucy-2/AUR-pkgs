@@ -19,8 +19,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-      with:
-        submodules: 'recursive'
+      # with:
+      #   submodules: 'recursive'
     - name: Checkout package list
       run: |
         packages=$(find . -mindepth 2 -maxdepth 2 -type f -name "PKGBUILD" -exec dirname {} \; | sed 's|^\./||' | sort -u | jq -R . | jq -s -c .)
@@ -32,6 +32,15 @@ jobs:
       matrix:
         packages: ${{fromJson(needs.checkout-packages.outputs.packages)}}
     steps:
+    - name: Setup SSH and Git
+      run: |
+        mkdir -p ~/.ssh
+        echo "${AUR_SSH_KEY}" > ~/.ssh/aur
+        chmod 600 ~/.ssh/aur
+        ssh-keyscan aur.archlinux.org >> ~/.ssh/known_hosts
+        git config --global core.sshCommand 'ssh -i ~/.ssh/aur -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+        git config --global user.email "glucy-2@outlook.com"
+        git config --global user.name "aur"
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
