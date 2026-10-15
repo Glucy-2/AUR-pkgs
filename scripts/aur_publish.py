@@ -174,7 +174,7 @@ def check_github_baseline(name, result):
         raise ValueError('expected_aur_head is stale versus .automation/aur-state.json; recheck required')
     if git(['cat-file', '-e', base + '^{commit}'], cwd=core.ROOT, check=False).returncode:
         raise Conflict('Check baseline commit is unknown to this checkout; recheck required')
-    diff = git(['diff', '--quiet', base, 'HEAD', '--', name], cwd=core.ROOT, check=False)
+    diff = git(['diff', '--quiet', base, 'HEAD', '--', f'{core.PACKAGES_DIR}/{name}'], cwd=core.ROOT, check=False)
     if diff.returncode == 1:
         raise Conflict('GitHub main changed this package since the check; recheck required')
     if diff.returncode:
@@ -274,11 +274,11 @@ def write_back(outcomes, ssh):
             state[name] = outcome['state']
         row = next(r for r in core.registry() if r['pkgbase'] == name)
         for filename, data in outcome['files'].items():
-            path = core.ROOT / name / filename
+            path = core.package_dir(name) / filename
             if not path.exists() or path.read_bytes() != data:
                 path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_bytes(data)
-        changed += [f'{name}/{f}' for f in row['files']]
+        changed += [f'{core.PACKAGES_DIR}/{name}/{f}' for f in row['files']]
     rendered = json.dumps(state, indent=2) + '\n'
     if not state_path.exists() or state_path.read_text() != rendered:
         state_path.write_text(rendered)

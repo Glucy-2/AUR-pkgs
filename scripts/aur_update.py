@@ -13,6 +13,12 @@ import urllib.parse
 import urllib.request
 
 ROOT = Path(__file__).resolve().parents[1]
+PACKAGES_DIR = 'packages'
+
+
+def package_dir(name):
+    """Recipe directory of a package inside the repository checkout."""
+    return ROOT / PACKAGES_DIR / name
 
 
 def run(args, cwd=None, **kwargs):
@@ -130,8 +136,8 @@ def github_release(row, recipe, info):
 
 
 def inspect_package(row):
-    recipe = (ROOT / row['pkgbase'] / 'PKGBUILD').read_text()
-    info = metadata((ROOT / row['pkgbase'] / '.SRCINFO').read_text())
+    recipe = (package_dir(row['pkgbase']) / 'PKGBUILD').read_text()
+    info = metadata((package_dir(row['pkgbase']) / '.SRCINFO').read_text())
     current = scalar(recipe, 'pkgver')
     detector = row['detector']
     if detector == 'github-release':

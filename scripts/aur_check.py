@@ -194,7 +194,7 @@ def check(row, work_dir, result_dir):
     try:
         reserve(work)
         core.prerequisites()
-        original = snapshot(core.ROOT / name, row['files'])
+        original = snapshot(core.package_dir(name), row['files'])
         recipe = original['PKGBUILD'].decode()
         original_info = core.metadata(original['.SRCINFO'].decode())
         result['old_version'] = result['new_version'] = version(recipe, original_info)
@@ -308,7 +308,7 @@ def check(row, work_dir, result_dir):
         if head != expected and different:
             raise ValueError('AUR HEAD conflicts with bootstrapped baseline')
         # Recheck checkout bytes without executing any package code on the host.
-        if snapshot(core.ROOT / name, row['files']) != original:
+        if snapshot(core.package_dir(name), row['files']) != original:
             raise ValueError('Checkout recipe changed while verification was running')
         result['stage'] = 'complete'
         recovery = head != expected and not different

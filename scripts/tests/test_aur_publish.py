@@ -40,6 +40,7 @@ class PublishTests(unittest.TestCase):
         core.ROOT = self.tmp / 'root'
         self.addCleanup(setattr, core, 'ROOT', self.old_root)
         (core.ROOT / '.automation').mkdir(parents=True)
+        (core.ROOT / core.PACKAGES_DIR).mkdir()
         (core.ROOT / '.automation/packages.json').write_text(json.dumps([
             {'pkgbase': PKG, 'enabled': True, 'detector': 'github-release', 'upstream': 'x/y', 'files': FILES},
             {'pkgbase': 'other', 'enabled': True, 'detector': 'github-release', 'upstream': 'x/z', 'files': ['PKGBUILD', '.SRCINFO']},
