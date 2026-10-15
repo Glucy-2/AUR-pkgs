@@ -140,6 +140,7 @@ jobs:
         with:
           name: results-${{ matrix.package }}
           path: ${{ runner.temp }}/upload
+          include-hidden-files: true
           if-no-files-found: warn
           retention-days: 7
 
