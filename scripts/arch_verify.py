@@ -22,6 +22,8 @@ SUM_ARRAY = re.compile(
     r'\)[ \t]*(?:#[^\n]*)?(?:\n|$)')
 
 
+VCS_PACKAGES = {'nali-nt-git', 'mcping-git'}
+
 def require(condition, message):
     if not condition:
         raise ValueError(message)
@@ -142,7 +144,7 @@ def checksum_schema(pkgbase, fields):
         sums.setdefault(group, set()).add(algorithm)
         for source, digest in zip(groups[group], values):
             if digest == 'SKIP':
-                require(pkgbase == 'nali-nt-git' and source_location(source).startswith('git+'),
+                require(pkgbase in VCS_PACKAGES and source_location(source).startswith('git+'),
                         f'Unapproved SKIP checksum: {source}')
             else:
                 require(re.fullmatch(r'[0-9a-fA-F]{' + str(ALGORITHMS[algorithm]) + '}', digest),
@@ -250,7 +252,7 @@ def build_audit(pkgbase):
     before = info(OUTPUT / 'pre-build.SRCINFO')
     after = info(RECIPE / '.SRCINFO')
     checksum_schema(pkgbase, after)
-    if pkgbase != 'nali-nt-git':
+    if pkgbase not in VCS_PACKAGES:
         require(current == saved['pkgbuild'], 'Build unexpectedly rewrote PKGBUILD')
         require(before == after, 'Build unexpectedly changed package metadata')
         return
@@ -322,7 +324,7 @@ def inspect_entry(members, entry):
             return
 
 
-def built_commit(fields):
+def built_commit(fields, pkgbase):
     sources = [source for values in source_groups(fields).values() for source in values
                if source_location(source).startswith('git+')]
     require(len(sources) == 1, 'Expected one VCS git source')
@@ -342,9 +344,11 @@ def built_commit(fields):
     base = ['git', '-c', 'safe.bareRepository=all', '-C', str(cache)]
     commit = command(base + ['rev-parse', '--verify', reference + '^{commit}'])
     require(re.fullmatch(r'[0-9a-f]{40}', commit), 'Invalid actual VCS commit')
-    described = command(base + ['describe', '--long', '--tags', '--abbrev=7', '--match=v*', commit])
-    generated_version = re.sub(r'([^-]*-g)', r'r\1', described.removeprefix('v')).replace('-', '.')
-    require(generated_version == one(fields, 'pkgver'), 'Actual cached commit does not match packaged VCS pkgver')
+    if pkgbase == 'nali-nt-git':
+        # Only this recipe derives pkgver from `git describe`; others (date-based) are checked by makepkg itself.
+        described = command(base + ['describe', '--long', '--tags', '--abbrev=7', '--match=v*', commit])
+        generated_version = re.sub(r'([^-]*-g)', r'r\1', described.removeprefix('v')).replace('-', '.')
+        require(generated_version == one(fields, 'pkgver'), 'Actual cached commit does not match packaged VCS pkgver')
     return commit
 
 
@@ -379,7 +383,7 @@ def inspect(pkgbase, entry):
     require(inspected == {pkgbase}, 'Main package was not inspected')
     require({path for path in (WORK / 'packages').iterdir()} == {path for path in paths if path.exists()},
             'Unexpected files in fresh PKGDEST')
-    commit = built_commit(fields) if pkgbase == 'nali-nt-git' else None
+    commit = built_commit(fields, pkgbase) if pkgbase in VCS_PACKAGES else None
     facts = {'pkgname': pkgbase, 'pkgver': expected_version, 'arch': expected_arch,
              'entry': entry, 'built_source_commit': commit}
     (OUTPUT / 'facts.json').write_text(json.dumps(facts, indent=2) + '\n')

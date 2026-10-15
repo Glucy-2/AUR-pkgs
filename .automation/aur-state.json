@@ -10,5 +10,6 @@
   "neo4j-community-bin": "6082b8999da77c0ae4d79353f1ef6c56acaae24b",
   "opencl-vanity-gpg": "3f5a9c4e40c1d9438113f8ab10448031c80803ab",
   "opencl-vanity-gpg-bin": "59ede3307eae0290f89eedad11c64921cfd76a1a",
-  "wakatime": "db48ad9dc5b2c3ea6899246150b069ddad1cba57"
+  "wakatime": "db48ad9dc5b2c3ea6899246150b069ddad1cba57",
+  "mcping-git": "9fb53a7b15346eae3468e3a8b453927089f6e7fd"
 }

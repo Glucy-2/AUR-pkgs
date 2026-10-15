@@ -14,7 +14,7 @@ ENTRIES = {
     'ddns-go-bin': 'usr/bin/ddns-go', 'ecapture-bin': 'usr/bin/ecapture',
     'ifrextractor-rs': 'usr/bin/ifrextractor', 'ifrextractor-rs-bin': 'usr/bin/ifrextractor',
     'intel-mlc': 'usr/bin/mlc', 'nali-nt': 'usr/bin/nali-nt',
-    'nali-nt-bin': 'usr/bin/nali-nt', 'nali-nt-git': 'usr/bin/nali-nt',
+    'nali-nt-bin': 'usr/bin/nali-nt', 'nali-nt-git': 'usr/bin/nali-nt', 'mcping-git': 'usr/bin/mcping',
     'neo4j-community-bin': 'usr/bin/neo4j',
     'opencl-vanity-gpg': 'usr/bin/opencl_vanity_gpg',
     'opencl-vanity-gpg-bin': 'usr/bin/opencl_vanity_gpg', 'wakatime': 'usr/bin/wakatime',

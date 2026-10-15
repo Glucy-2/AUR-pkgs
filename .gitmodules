@@ -1,7 +1,3 @@
-[submodule "mcping-git"]
-    path = mcping-git
-    url = ssh://aur@aur.archlinux.org/mcping-git.git
-
 [submodule "neo4j-bin"]
     path = neo4j-bin
     url = ssh://aur@aur.archlinux.org/neo4j-bin.git

@@ -100,3 +100,8 @@ __pycache__/
 !/yukigram-desktop/.SRCINFO
 !/yukigram-desktop/0000-Fix-Pony-fix-lang-res-file-loc.patch
 !/yukigram-desktop/.gitignore
+!/mcping-git/
+/mcping-git/*
+!/mcping-git/PKGBUILD
+!/mcping-git/.SRCINFO
+!/mcping-git/.gitignore

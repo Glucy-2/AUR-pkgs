@@ -34,6 +34,7 @@ case "$pkgbase" in
     ifrextractor-rs|ifrextractor-rs-bin) required_entry=/usr/bin/ifrextractor ;;
     intel-mlc) required_entry=/usr/bin/mlc ;;
     nali-nt|nali-nt-bin|nali-nt-git) required_entry=/usr/bin/nali-nt ;;
+    mcping-git) required_entry=/usr/bin/mcping ;;
     neo4j-community-bin) required_entry=/usr/bin/neo4j ;;
     opencl-vanity-gpg|opencl-vanity-gpg-bin) required_entry=/usr/bin/opencl_vanity_gpg ;;
     wakatime) required_entry=/usr/bin/wakatime ;;

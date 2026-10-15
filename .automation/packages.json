@@ -42,6 +42,16 @@
     ]
   },
   {
+    "pkgbase": "mcping-git",
+    "enabled": true,
+    "detector": "vcs-build-first",
+    "upstream": "Tnze/go-mc",
+    "files": [
+      "PKGBUILD",
+      ".SRCINFO"
+    ]
+  },
+  {
     "pkgbase": "intel-mlc",
     "enabled": true,
     "detector": "intel-mlc",
