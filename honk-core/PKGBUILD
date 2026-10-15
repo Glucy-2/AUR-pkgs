@@ -1,0 +1,27 @@
+# Maintainer: Glucy2 <glucy-2@outlook.com>
+
+pkgname=honk-core
+pkgver="0.0.1.beta.50"
+pkgrel="1"
+pkgdesc="honk is a Rust transparent-proxy engine for Linux, inspired by dae for its eBPF datapath and configuration surface, and by sing-box for its outbound groups, multi-protocol dialers, and Clash-compatible API."
+arch=(
+    "x86_64"
+    "aarch64"
+)
+makedepends=("cargo")
+url="https://github.com/daeuniverse/honk"
+license=("GPL-3.0")
+
+source=("https://github.com/daeuniverse/honk/archive/refs/tags/v$pkgver.tar.gz")
+
+sha256sums=("3331ec2fc4a892bac0afb89f290989f86f6dd8ea0e3a43f8e6778df2456ba453")
+
+build() {
+    cd "${srcdir}/honk-core-${pkgver}"
+    go build
+}
+
+package() {
+    mkdir -p "${pkgdir}/usr/bin"
+    install -Dm755 "${srcdir}/honk-core-${pkgver}/honk-core" "${pkgdir}/usr/bin/honk-core"
+}

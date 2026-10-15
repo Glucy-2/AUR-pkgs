@@ -1,0 +1,26 @@
+# Maintainer: GreyXor <greyxor@protonmail.com>
+pkgname=fastflowlm
+pkgver=0.9.34
+pkgrel=1
+pkgdesc="Run LLMs on AMD Ryzen AI NPUs in minutes."
+arch=('x86_64')
+url="https://github.com/FastFlowLM/FastFlowLM"
+license=('MIT')
+depends=('fftw' 'curl' 'ffmpeg')
+makedepends=('cmake' 'ninja' 'boost')
+
+source=("https://github.com/FastFlowLM/FastFlowLM/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=("867b17c44eb9e7438866124a8cfdf6f9c652dfcf13feca89a7fb3057b4d447ec")
+
+build() {
+    cd "$srcdir/FastFlowLM-$pkgver/src"
+    mkdir -p build
+    # cmake --preset linux-default
+    cmake --build build
+}
+
+package() {
+    cd "$srcdir/FastFlowLM-$pkgver/src"
+    DESTDIR="$pkgdir" cmake --install build
+}
+

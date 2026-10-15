@@ -1,0 +1,48 @@
+# Maintainer: Glucy2 <glucy-2@outlook.com>
+
+_pkgname=sherpa-onnx
+pkgbase="${_pkgname}-bin"
+pkgname=(
+    "sherpa-onnx-bin"
+    "sherpa-onnx-bin-static"
+    "sherpa-onnx-bin-spacemit"
+    )
+pkgver="1.12.35"
+pkgrel="1"
+pkgdesc='Speech-to-text, text-to-speech, speaker diarization, speech enhancement, source separation, and VAD using next-gen Kaldi with onnxruntime without Internet connection. Support embedded systems, Android, iOS, HarmonyOS, Raspberry Pi, RISC-V, RK NPU, Axera NPU, Ascend NPU, x86_64 servers, websocket server/client, support 12 programming languages  (Binary Package from GitHub Releases)'
+
+arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
+arch_sherpa-onnx-bin=('x86_64' 'aarch64' 'armv7h' 'riscv64')
+arch_sherpa-onnx-bin-static=('x86_64' 'aarch64' 'armv7h' 'riscv64')
+arch_sherpa-onnx-bin-spacemit=('riscv64')
+url='https://k2-fsa.github.io/sherpa/onnx/index.html'
+license=("Apache-2.0")
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
+
+source_sherpa_onnx_bin_x86_64=("https://github.com/k2-fsa/sherpa-onnx/releases/download/v$pkgver/sherpa-onnx-v$pkgver-linux-x64-shared.tar.bz2")
+source_sherpa_onnx_bin_aarch64=("https://github.com/k2-fsa/sherpa-onnx/releases/download/v$pkgver/sherpa-onnx-v$pkgver-linux-aarch64-static.tar.bz2")
+source_sherpa_onnx_bin_armv7h=("https://github.com/k2-fsa/sherpa-onnx/releases/download/v$pkgver/sherpa-onnx-v$pkgver-linux-arm-gnueabihf-shared.tar.bz2")
+source_sherpa_onnx_bin_riscv64=("https://github.com/k2-fsa/sherpa-onnx/releases/download/v$pkgver/sherpa-onnx-v$pkgver-linux-riscv64-static.tar.bz2")
+
+# https://github.com/k2-fsa/sherpa-onnx/releases/download/v$pkgver/checksum.txt
+
+sha256sums_sherpa_onnx_bin_x86_64=("d8e18e7e44eb644376f0209723bf2147b8e83b742e28292821e2381fafee09ae")
+sha256sums_sherpa_onnx_bin_aarch64=("195226bade773517323ed6e28dedfd7ef278b2b97906d838e951bee3d28ec838")
+sha256sums_sherpa_onnx_bin_armv7h=("689dff2c5a39683dea5fcd8f0e965b454770a15c3e00fff5d851b5667c9edfb7")
+sha256sums_sherpa_onnx_bin_riscv64=("368998ebabc4c21f9c6e5c4012b26141b7a17249e32dbcf19055092f4b39f7a3")
+
+package_sherpa-onnx-bin() {
+    install -Dm755 "${srcdir}/sherpa-onnx-v${pkgver}-linux-x64-shared/sherpa-onnx" "${pkgdir}/usr/bin/sherpa-onnx"
+    install -Dm644 "${srcdir}/sherpa-onnx-v${pkgver}-linux-x64-shared/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+}
+
+package_sherpa-onnx-bin-static() {
+    install -Dm755 "${srcdir}/sherpa-onnx-v${pkgver}-linux-aarch64-static/sherpa-onnx" "${pkgdir}/usr/bin/sherpa-onnx-static"
+    install -Dm644 "${srcdir}/sherpa-onnx-v${pkgver}-linux-aarch64-static/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+}
+
+package_sherpa-onnx-bin-spacemit() {
+    install -Dm755 "${srcdir}/sherpa-onnx-v${pkgver}-linux-arm-gnueabihf-shared/sherpa-onnx" "${pkgdir}/usr/bin/sherpa-onnx-spacemit"
+    install -Dm644 "${srcdir}/sherpa-onnx-v${pkgver}-linux-arm-gnueabihf-shared/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+}

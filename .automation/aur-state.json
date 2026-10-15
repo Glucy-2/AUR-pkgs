@@ -1,0 +1,14 @@
+{
+  "ddns-go-bin": "d04db0df3f9e6c18ec8ab84adb2ba78926673fab",
+  "ecapture-bin": "807ab9ed72308683b6a008611a7f15af861c10b0",
+  "ifrextractor-rs": "381a13c77818ae8ed81cbca665750d5b83bb9db2",
+  "ifrextractor-rs-bin": "f7e3cb19a6a824a0fd03a402da6b207cbdadfa03",
+  "intel-mlc": "702b98f92e0920a36725c9096b54efb85fd641ae",
+  "nali-nt": "a4017f95a47ad7d92299cb4571b7876dcab0fae8",
+  "nali-nt-bin": "6ed5b43a4e8bef3dd405fc89b21b2e72fc16f775",
+  "nali-nt-git": "8b2608cf7c673dc71147eaa02185bdb07b2dc7ef",
+  "neo4j-community-bin": "6082b8999da77c0ae4d79353f1ef6c56acaae24b",
+  "opencl-vanity-gpg": "3f5a9c4e40c1d9438113f8ab10448031c80803ab",
+  "opencl-vanity-gpg-bin": "59ede3307eae0290f89eedad11c64921cfd76a1a",
+  "wakatime": "db48ad9dc5b2c3ea6899246150b069ddad1cba57"
+}

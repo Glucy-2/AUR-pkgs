@@ -1,0 +1,175 @@
+[
+  {
+    "pkgbase": "ddns-go-bin",
+    "enabled": true,
+    "detector": "github-release",
+    "upstream": "jeessy2/ddns-go",
+    "files": [
+      "PKGBUILD",
+      ".SRCINFO",
+      "ddns-go.service",
+      "ddns-go.install"
+    ]
+  },
+  {
+    "pkgbase": "ecapture-bin",
+    "enabled": true,
+    "detector": "github-release",
+    "upstream": "gojue/ecapture",
+    "files": [
+      "PKGBUILD",
+      ".SRCINFO"
+    ]
+  },
+  {
+    "pkgbase": "ifrextractor-rs",
+    "enabled": true,
+    "detector": "github-release",
+    "upstream": "LongSoft/IFRExtractor-RS",
+    "files": [
+      "PKGBUILD",
+      ".SRCINFO"
+    ]
+  },
+  {
+    "pkgbase": "ifrextractor-rs-bin",
+    "enabled": true,
+    "detector": "github-release",
+    "upstream": "LongSoft/IFRExtractor-RS",
+    "files": [
+      "PKGBUILD",
+      ".SRCINFO"
+    ]
+  },
+  {
+    "pkgbase": "intel-mlc",
+    "enabled": true,
+    "detector": "intel-mlc",
+    "upstream": null,
+    "files": [
+      "PKGBUILD",
+      ".SRCINFO",
+      "intel-mlc.install"
+    ]
+  },
+  {
+    "pkgbase": "nali-nt",
+    "enabled": true,
+    "detector": "github-release",
+    "upstream": "nxtrace/nali",
+    "files": [
+      "PKGBUILD",
+      ".SRCINFO"
+    ]
+  },
+  {
+    "pkgbase": "nali-nt-bin",
+    "enabled": true,
+    "detector": "github-release",
+    "upstream": "nxtrace/nali",
+    "files": [
+      "PKGBUILD",
+      ".SRCINFO"
+    ]
+  },
+  {
+    "pkgbase": "nali-nt-git",
+    "enabled": true,
+    "detector": "vcs-build-first",
+    "upstream": "nxtrace/nali",
+    "files": [
+      "PKGBUILD",
+      ".SRCINFO"
+    ]
+  },
+  {
+    "pkgbase": "neo4j-community-bin",
+    "enabled": true,
+    "detector": "neo4j-community",
+    "upstream": null,
+    "files": [
+      "PKGBUILD",
+      ".SRCINFO",
+      "neo4j.sysusers",
+      "neo4j.tmpfiles"
+    ]
+  },
+  {
+    "pkgbase": "opencl-vanity-gpg",
+    "enabled": true,
+    "detector": "github-release",
+    "upstream": "TransparentLC/opencl_vanity_gpg",
+    "files": [
+      "PKGBUILD",
+      ".SRCINFO"
+    ]
+  },
+  {
+    "pkgbase": "opencl-vanity-gpg-bin",
+    "enabled": true,
+    "detector": "github-release",
+    "upstream": "TransparentLC/opencl_vanity_gpg",
+    "files": [
+      "PKGBUILD",
+      ".SRCINFO"
+    ]
+  },
+  {
+    "pkgbase": "wakatime",
+    "enabled": true,
+    "detector": "github-release",
+    "upstream": "wakatime/wakatime-cli",
+    "files": [
+      "PKGBUILD",
+      ".SRCINFO"
+    ]
+  },
+  {
+    "pkgbase": "honk-core",
+    "enabled": false,
+    "detector": "disabled",
+    "upstream": null,
+    "files": [
+      "PKGBUILD"
+    ]
+  },
+  {
+    "pkgbase": "fastflowlm",
+    "enabled": false,
+    "detector": "disabled",
+    "upstream": null,
+    "files": [
+      "PKGBUILD"
+    ]
+  },
+  {
+    "pkgbase": "fastflowlm-git",
+    "enabled": false,
+    "detector": "disabled",
+    "upstream": null,
+    "files": [
+      "PKGBUILD",
+      ".SRCINFO"
+    ]
+  },
+  {
+    "pkgbase": "sherpa-onnx-bin",
+    "enabled": false,
+    "detector": "disabled",
+    "upstream": null,
+    "files": [
+      "PKGBUILD"
+    ]
+  },
+  {
+    "pkgbase": "yukigram-desktop",
+    "enabled": false,
+    "detector": "disabled",
+    "upstream": null,
+    "files": [
+      "PKGBUILD",
+      ".SRCINFO",
+      "0000-Fix-Pony-fix-lang-res-file-loc.patch"
+    ]
+  }
+]
