@@ -24,7 +24,7 @@ license=('AGPL-3.0')
 
 source=("https://github.com/TransparentLC/opencl_vanity_gpg/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=("1156a1e11862bcd2f07db4b2815a53e8c53fa5b1560b48c6d57e8c25fdd3b7f3")
+sha256sums=('1156a1e11862bcd2f07db4b2815a53e8c53fa5b1560b48c6d57e8c25fdd3b7f3')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
