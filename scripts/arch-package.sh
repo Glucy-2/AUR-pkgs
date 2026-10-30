@@ -38,6 +38,7 @@ case "$pkgbase" in
     neo4j-community-bin) required_entry=/usr/bin/neo4j ;;
     opencl-vanity-gpg|opencl-vanity-gpg-bin) required_entry=/usr/bin/opencl_vanity_gpg ;;
     wakatime) required_entry=/usr/bin/wakatime ;;
+    xmtr|xmtr-bin) required_entry=/usr/bin/xmtr ;;
     *) printf 'Unknown or disabled package: %s\n' "$pkgbase" >&2; exit 2 ;;
 esac
 [[ "$entry" == "$required_entry" && -f /verify.py && -d /work/recipe && ! -L /work/recipe ]]

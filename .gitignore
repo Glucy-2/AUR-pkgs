@@ -80,6 +80,16 @@ __pycache__/
 !/packages/opencl-vanity-gpg-bin/.SRCINFO
 !/packages/opencl-vanity-gpg-bin/.gitignore
 !/packages/wakatime/
+!/packages/xmtr/
+/packages/xmtr/*
+!/packages/xmtr/PKGBUILD
+!/packages/xmtr/.SRCINFO
+!/packages/xmtr/.gitignore
+!/packages/xmtr-bin/
+/packages/xmtr-bin/*
+!/packages/xmtr-bin/PKGBUILD
+!/packages/xmtr-bin/.SRCINFO
+!/packages/xmtr-bin/.gitignore
 /packages/wakatime/*
 !/packages/wakatime/PKGBUILD
 !/packages/wakatime/.SRCINFO

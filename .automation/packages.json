@@ -135,6 +135,26 @@
     ]
   },
   {
+    "pkgbase": "xmtr",
+    "enabled": true,
+    "detector": "github-release",
+    "upstream": "Alice39s/xmtr",
+    "files": [
+      "PKGBUILD",
+      ".SRCINFO"
+    ]
+  },
+  {
+    "pkgbase": "xmtr-bin",
+    "enabled": true,
+    "detector": "github-release",
+    "upstream": "Alice39s/xmtr",
+    "files": [
+      "PKGBUILD",
+      ".SRCINFO"
+    ]
+  },
+  {
     "pkgbase": "honk-core",
     "enabled": false,
     "detector": "disabled",

@@ -27,11 +27,11 @@ Glucy2 的 AUR 软件包仓库，带有自动检测上游更新、隔离构建�
 
 ## 包列表
 
-### 自动维护（13 个）
+### 自动维护（15 个）
 
 | 包 | 检测方式 | 说明 |
 |---|---|---|
-| ddns-go-bin、ecapture-bin、ifrextractor-rs、ifrextractor-rs-bin、nali-nt、nali-nt-bin、opencl-vanity-gpg、opencl-vanity-gpg-bin、wakatime | `github-release` | 取最新的正式、非预发布、`vX.Y.Z` 形式的 Release，按 Arch `vercmp` 比较 |
+| ddns-go-bin、ecapture-bin、ifrextractor-rs、ifrextractor-rs-bin、nali-nt、nali-nt-bin、opencl-vanity-gpg、opencl-vanity-gpg-bin、wakatime、xmtr、xmtr-bin | `github-release` | 取最新的正式、非预发布、`vX.Y.Z` 形式的 Release，按 Arch `vercmp` 比较 |
 | intel-mlc | `intel-mlc` | 读取 Intel 官方下载页的镜像地址与 SHA256 |
 | neo4j-community-bin | `neo4j-community` | 读取 Neo4j 部署中心的 Community 版本，并从 `.deb` 解析 Java 最低版本 |
 | nali-nt-git、mcping-git | `vcs-build-first` | 见下文 |

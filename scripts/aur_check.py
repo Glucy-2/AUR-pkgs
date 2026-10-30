@@ -18,6 +18,7 @@ ENTRIES = {
     'neo4j-community-bin': 'usr/bin/neo4j',
     'opencl-vanity-gpg': 'usr/bin/opencl_vanity_gpg',
     'opencl-vanity-gpg-bin': 'usr/bin/opencl_vanity_gpg', 'wakatime': 'usr/bin/wakatime',
+    'xmtr': 'usr/bin/xmtr', 'xmtr-bin': 'usr/bin/xmtr',
 }
 
 
